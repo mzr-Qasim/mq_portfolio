@@ -1,0 +1,688 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <!-- Title-->
+  {% for title in Home_Page_Data %}
+  <title>{{title.page_title}}</title>
+  {% endfor %}
+  <!-- Description-->
+  <meta name="description" content="Personal Portfolio Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicons-->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/favicon-16x16.png' %}">
+  <!-- Web fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&amp;display=swap" rel="stylesheet">
+  <!-- CSS vendors-->
+  <link rel="stylesheet" href="{% static 'css/bootstrap-custom.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tiny-slider.css' %}">
+  <link rel="stylesheet" href="{% static 'css/lity.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/simplebar.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.mb.YTPlayer.min.css' %}">
+  <!-- Main CSS-->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+  <!-- CSS Color scheme--> 
+  <link id="color-scheme" rel="stylesheet" href="{% static 'css/colors/main-indigo.css' %}">
+
+  <!-- Custom CSS (Add your custom CSS styles to this file)-->
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+  
+</head>
+
+<body class="theme-dark">
+  <!-- Preloader-->
+  <div class="preloader">
+    <div class="preloader-block">
+      <div class="preloader-icon"><span class="loading-dot loading-dot-1"></span><span class="loading-dot loading-dot-2"></span><span class="loading-dot loading-dot-3"></span></div>
+    </div>
+  </div>
+  <div id="overlay-effect"></div>
+  <!-- Navbar-->
+  <nav class="navbar-expand-md navbar fixed-top" id="navbar"><a class="navbar-brand" data-scroll="" href="#home-area">
+      <!-- Navbar Logo-->
+      {% for logo in Home_Page_Data %}
+      <img class="img-fluid" src="{{logo.nav_logo.url}}" alt="">
+      {% endfor %}
+    </a>
+    <span class="navbar-menu ml-auto" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" role="button"><span class="btn-line"></span></span>
+    <div class="collapse navbar-collapse order-1 order-lg-0" id="navbarSupportedContent">
+      <!-- Navbar menu-->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+        <!-- <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li> -->
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Home-->
+   {% for photo in Home_Page_Data %}
+  <section class="home-area element-cover-bg" id="home" style="background-image: url('{{ photo.photo.url }}');">
+    {% endfor %}
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-12 col-lg-8 home-content text-center">
+          {% for name in Home_Page_Data %}
+          <h1 class="home-name">{{name.first_name}} <span>{{name.last_name}}</span></h1>
+          {% endfor %}
+          {% for profession in Home_Page_Data %}
+          <h4 class="cd-headline clip home-headline">I’m a <span class="cd-words-wrapper single-headline"><b class="is-visible">{{profession.profession_1}}</b><b>{{profession.profession_2}}</b><b>{{profession.profession_3}}</b></span></h4>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="fixed-wrapper">
+      <!-- Languages list-->
+      <!-- <div class="fixed-block block-left">
+        <ul class="list-unstyled languages-list">
+          <li><a href="#0"><span class="single-language">ENG</span></a></li>
+          <li><a href="#0"><span class="single-language">JAP</span></a></li>
+        </ul>
+      </div> -->
+      <!-- Social media icons-->
+      <div class="fixed-block block-right">
+        <ul class="list-unstyled social-icons">
+          {% for links in Home_Page_Data %}
+          <!-- <li><a href="{{links.twitter_link}}"><i class="icon ion-logo-twitter"></i></a></li> -->
+          <li><a href="{{links.facebook_link}}"><i class="icon ion-logo-facebook"></i></a></li>
+          <li><a href="{{links.linkedin_link}}"><i class="icon ion-logo-linkedin"></i></a></li>
+          <li><a href="{{links.github_link}}"><i class="icon ion-logo-github"></i></a></li>
+          <li><a href="{{links.instagram_link}}"><i class="icon ion-logo-instagram"></i></a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- About lightbox-->
+  <div class="lightbox-wrapper" id="about" data-simplebar>
+    <div class="container">
+      <div class="lightbox-close">
+        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="lightbox-content">
+            <div class="row">
+              <div class="col-12">
+                <div class="section-heading page-heading">
+                  <p class="section-description">Get to know me</p>
+                  <h2 class="section-title">About Me</h2>
+                  <div class="animated-bar"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Info section-->
+            <div class="info-section single-section">
+              <div class="row align-items-center">
+                <!-- Picture part-->                 
+                <div class="col-12 col-lg-5 info-img">{% for about_photo in About_Section_Data %}<img class="img-fluid img-thumbnail" src="{{about_photo.photo.url}}" alt="About Picture">{% endfor %}</div>
+                <!-- Content part-->
+                <div class="col-12 col-lg-7 info-content">
+                  <div class="content-block">
+                    <h2 class="content-subtitle">Who am i?</h2>
+                    <h6 class="content-title">I'm {% for name in Home_Page_Data %}{{name.first_name}} {{name.last_name}},{% endfor %}  {% for data in About_Section_Data %} {{data.introduction}} {% endfor %}</h6>
+                    <div class="content-description">
+                    {% for data in About_Section_Data %}
+                      <p>{{data.introduction_description}}</p>
+                    {% endfor %}
+                    </div>
+                    <address class="content-info">
+                      <div class="row">
+                        <div class="col-12 col-md-6 single-info"><span>Name:</span>
+                          {% for name in Home_Page_Data %}
+                          <p>{{name.first_name}} {{name.last_name}}</p>
+                          {% endfor %}
+                        </div>
+                        <div class="col-12 col-md-6 single-info"><span>Email:</span>
+                          {% for data in About_Section_Data %}
+                          <p><a href="mailto:{{data.email}}">{{data.email}}</a></p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-md-6 single-info"><span>Age:</span>
+                          {% for data in About_Section_Data %}
+                          <p>{{data.age}}</p>
+                          {% endfor %}
+                        </div>
+                        <div class="col-12 col-md-6 single-info"><span>From:</span>
+                          {% for data in About_Section_Data %}
+                          <p>{{data.city}}, {{data.country}}</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </address>
+                    <div class="d-block d-sm-flex align-items-center">{% for data in About_Section_Data %}<a class="btn content-download button-main button-scheme"  href="{{ data.cv }}" download="{{ data.cv }}" role="button">Download CV</a>{% endfor %}
+                      <ul class="list-unstyled list-inline content-follow">
+                        {% for about_links in Home_Page_Data %}
+                        <!-- <li class="list-inline-item"><a href="{{about_links.twitter_link}}"><i class="icon ion-logo-twitter"></i></a></li> -->
+                        <li class="list-inline-item"><a href="{{about_links.instagram_link}}"><i class="icon ion-logo-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="{{about_links.linkedin_link}}"><i class="icon ion-logo-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="{{about_links.github_link}}"><i class="icon ion-logo-github"></i></a></li>
+                        <li class="list-inline-item"><a href="{{about_links.facebook_link}}"><i class="icon ion-logo-facebook"></i></a></li>
+                        {% endfor %}
+                      </ul>  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Services section-->
+            <div class="services-section single-section">
+              <div class="row">
+                <div class="col-12">
+                  <div class="section-heading">
+                    <p class="section-description">Services i offer to my clients</p>
+                    <h2 class="section-title">My Services</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- Single service-->
+              {% for data in Services_Data %}
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="single-service"><i class="icon service-icon {{data.icon}}"></i>
+                    <h6 class="service-title">{{data.title}}</h6>
+                    <p class="service-description">{{data.description}}</p>
+                  </div>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+            <!-- Testimonials section-->
+            <!-- <div class="testimonials-section single-section">
+              <div class="row">
+                <div class="col-12">
+                  <div class="section-heading">
+                    <p class="section-description">What my clients think about me</p>
+                    <h2 class="section-title">Testimonials</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="my-slider">
+                <div class="slider-item"> -->
+                  <!-- Single review-->
+                  <!-- <div class="single-review swiper-slide">
+                    <div class="review-header d-flex justify-content-between">
+                      <div class="review-client">
+                        <div class="media"><img class="img-fluid rounded-circle client-avatar" src="img/client-1.jpg" alt="Client">
+                          <div class="client-details">
+                            <h6 class="client-name">Julia Sakura</h6><span class="client-role">Envato Customer</span>
+                          </div>
+                        </div>
+                      </div><i class="icon ion-md-quote review-icon"></i>
+                    </div>
+                    <p class="review-content">Emma did an excellent creative job, addressing our request quickly, and also providing her own graphic insight, being open to feedback and changes or edits when they arose. She worked with us the entire way. Highly recommended.</p>
+                  </div>
+                </div> -->
+                <!-- <div class="slider-item"> -->
+                  <!-- Single review-->
+                  <!-- <div class="single-review swiper-slide">
+                    <div class="review-header d-flex justify-content-between">
+                      <div class="review-client">
+                        <div class="media"><img class="img-fluid rounded-circle client-avatar" src="img/client-2.jpg" alt="Client">
+                          <div class="client-details">
+                            <h6 class="client-name">John Santana</h6><span class="client-role">Entrepreneur</span>
+                          </div>
+                        </div>
+                      </div><i class="icon ion-md-quote review-icon"></i>
+                    </div>
+                    <p class="review-content">Emma did an excellent creative job, addressing our request quickly, and also providing her own graphic insight, being open to feedback and changes or edits when they arose. She worked with us the entire way. Highly recommended.</p>
+                  </div>
+                </div> -->
+                <!-- <div class="slider-item"> -->
+                  <!-- Single review-->
+                  <!-- <div class="single-review swiper-slide">
+                    <div class="review-header d-flex justify-content-between">
+                      <div class="review-client">
+                        <div class="media"><img class="img-fluid rounded-circle client-avatar" src="img/client-3.jpg" alt="Client">
+                          <div class="client-details">
+                            <h6 class="client-name">Maria Wilson</h6><span class="client-role">Envato Customer</span>
+                          </div>
+                        </div>
+                      </div><i class="icon ion-md-quote review-icon"></i>
+                    </div>
+                    <p class="review-content">Emma did an excellent creative job, addressing our request quickly, and also providing her own graphic insight, being open to feedback and changes or edits when they arose. She worked with us the entire way. Highly recommended.</p>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- Pricing section-->
+            <!-- <div class="pricing-section single-section">
+              <div class="row">
+                <div class="col-12">
+                  <div class="section-heading">
+                    <p class="section-description">Get started with my services</p>
+                    <h2 class="section-title">Choose a Plan</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row align-items-center"> -->
+                <!-- Single plan-->
+                <!-- <div class="col-lg-4">
+                  <div class="single-plan mb-4 mb-sm-5"><i class="plan-icon icon ion-md-egg"></i>
+                    <h3 class="plan-type">Standard</h3>
+                    <h2 class="plan-price">$19/month</h2>
+                    <ul class="list-unstyled plan-list">
+                      <li>Mobile App Design</li>
+                      <li>Responsive Design</li>
+                      <li>Database Development</li>
+                      <li>Web Design</li>
+                      <li>24/7 Support</li>
+                    </ul><a class="btn button-main button-scheme plan-btn" href="#0" role="button">Get Standard</a>
+                  </div>
+                </div> -->
+                <!-- Single plan-->
+                <!-- <div class="col-lg-4">
+                  <div class="single-plan mb-4 mb-sm-5"><i class="plan-icon icon ion-ios-rocket"></i>
+                    <h3 class="plan-type">Professional</h3>
+                    <h2 class="plan-price">$29/month</h2>
+                    <ul class="list-unstyled plan-list">
+                      <li>Mobile App Design</li>
+                      <li>Responsive Design</li>
+                      <li>Database Development</li>
+                      <li>Web Design</li>
+                      <li>24/7 Support</li>
+                    </ul><a class="btn button-main button-scheme plan-btn" href="#0" role="button">Get Pro</a>
+                  </div>
+                </div> -->
+                <!-- Single plan-->
+                <!-- <div class="col-lg-4">
+                  <div class="single-plan mb-4 mb-sm-5"><i class="plan-icon icon ion-logo-ionic"></i>
+                    <h3 class="plan-type">Business</h3>
+                    <h2 class="plan-price">$39/month</h2>
+                    <ul class="list-unstyled plan-list">
+                      <li>Mobile App Design</li>
+                      <li>Responsive Design</li>
+                      <li>Database Development</li>
+                      <li>Web Design</li>
+                      <li>24/7 Support</li>
+                    </ul><a class="btn button-main button-scheme plan-btn" href="#0" role="button">Get Business</a> -->
+                  <!-- </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Resume lightbox-->
+  <div class="lightbox-wrapper" id="resume" data-simplebar>
+    <div class="container">
+      <div class="lightbox-close">
+        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="lightbox-content">
+            <div class="row">
+              <div class="col-12">
+                <div class="section-heading page-heading">
+                  <p class="section-description">Check out my Resume</p>
+                  <h2 class="section-title">Resume</h2>
+                  <div class="animated-bar"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Resume section-->
+            <div class="resume-section single-section">
+              <div class="row">
+                <!-- Education part-->
+                <div class="col-12 col-md-6">
+                  <div class="col-block education">
+                    <h3 class="col-title">Education</h3>
+                    {% for data in Resume_Section_Data %}
+                    <div class="resume-item"><span class="item-arrow"></span>
+                      <h5 class="item-title">{{data.education_title}}</h5><span class="item-details">{{data.education_title_details}}</span>
+                      <p class="item-description">{{data.education_description}}</p>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                <!-- Experience part-->
+                <div class="col-12 col-md-6">
+                  <div class="col-block experience">
+                    <h3 class="col-title">Experience</h3>
+                    {% for data in Resume_Section_Data %}
+                    <div class="resume-item"><span class="item-arrow"></span>
+                      <h5 class="item-title">{{data.experience_title}}</h5><span class="item-details">{{data.experience_title_details}}</span>
+                      <p class="item-description">{{data.experience_description}}</p>
+                    </div>
+                    {% endfor %}                  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Skills section-->
+            <div class="skills-section single-section">
+              <div class="row">
+                <div class="col-12">
+                  <div class="section-heading">
+                    <p class="section-description">My level of knowledge in some tools</p>
+                    <h2 class="section-title">My Skills</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  {% for skill in Skills_Data %}
+                  <div class="single-skill" data-percentage="{{skill.skill_1_percentage}}">
+                  {% endfor %}
+                    <div class="skill-info"><span class="skill-name">{% for skill in Skills_Data %} {{skill.skill_1_name}} {% endfor %}</span><span class="skill-percentage"></span></div>
+                    <div class="progress skill-progress">
+                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  {% for skill in Skills_Data %}
+                  <div class="single-skill" data-percentage="{{skill.skill_2_percentage}}">
+                  {% endfor %}
+                    <div class="skill-info"><span class="skill-name">{% for skill in Skills_Data %} {{skill.skill_2_name}} {% endfor %}</span><span class="skill-percentage"></span></div>
+                    <div class="progress skill-progress">
+                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  {% for skill in Skills_Data %}
+                  <div class="single-skill" data-percentage="{{skill.skill_3_percentage}}">
+                  {% endfor %}
+                    <div class="skill-info"><span class="skill-name">{% for skill in Skills_Data %} {{skill.skill_3_name}} {% endfor %}</span><span class="skill-percentage"></span></div>
+                    <div class="progress skill-progress">
+                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  {% for skill in Skills_Data %}
+                  <div class="single-skill" data-percentage="{{skill.skill_4_percentage}}">
+                  {% endfor %}
+                    <div class="skill-info"><span class="skill-name">{% for skill in Skills_Data %} {{skill.skill_4_name}} {% endfor %}</span><span class="skill-percentage"></span></div>
+                    <div class="progress skill-progress">
+                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  {% for skill in Skills_Data %}
+                  <div class="single-skill" data-percentage="{{skill.skill_5_percentage}}">
+                  {% endfor %}
+                    <div class="skill-info"><span class="skill-name">{% for skill in Skills_Data %} {{skill.skill_5_name}} {% endfor %}</span><span class="skill-percentage"></span></div>
+                    <div class="progress skill-progress">
+                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  {% for skill in Skills_Data %}
+                  <div class="single-skill" data-percentage="{{skill.skill_6_percentage}}">
+                  {% endfor %}
+                    <div class="skill-info"><span class="skill-name">{% for skill in Skills_Data %} {{skill.skill_6_name}} {% endfor %}</span><span class="skill-percentage"></span></div>
+                    <div class="progress skill-progress">
+                      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Video section-->
+            <!-- <div class="video-section single-section">
+              <div class="row align-items-center">
+                <div class="col-12 col-lg-6 content-part">
+                  <h3 class="video-title">Take a tour of my office</h3>
+                  <p class="video-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia cum quasi assumenda culpa praesentium consectetur voluptatibus expedita. Voluptatem tempore, aspernatur rem facilis, distinctio nemo! Odio velit, nemo dolorem voluptas!</p>
+                  <p class="video-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium qui aspernatur unde mollitia, in laborum.</p>
+                </div>
+                <div class="col-12 col-lg-6 video-part"><a class="media-lightbox" href="https://www.youtube.com/watch?v=doteMqP6eSc" data-lightbox>
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <div class="embed-responsive-item element-cover-bg"><span class="play-wrapper"><i class="icon ion-md-play"></i></span></div>
+                    </div>
+                  </a></div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Portfolio lightbox-->
+  <div class="lightbox-wrapper" id="portfolio" data-simplebar>
+    <div class="container">
+      <div class="lightbox-close">
+        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="lightbox-content">
+            <div class="row">
+              <div class="col-12">
+                <div class="section-heading page-heading">
+                  <p class="section-description">Showcasing some of my best work</p>
+                  <h2 class="section-title">Portfolio</h2>
+                  <div class="animated-bar"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Portfolio section-->
+            <div class="portfolio-section single-section">
+              <div class="row">
+                <!-- Filter nav-->
+                <div class="col-12">
+                  <ul class="list-inline filter-control" role="group" aria-label="Filter Control">
+                    <li class="list-inline-item tab-active" data-filter="*">All</li>
+                    {% for category in Categories_Data %}
+                    <li class="list-inline-item" data-filter=".{{category.slug}}">{{category.name}}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <!-- Thumbnail list-->
+              <div class="portfolio-grid row">
+                <!-- Single item-->
+                 {% for item in Portfolio_Data %}
+                <div class="single-item col-6 col-lg-4 {% for category in item.categories.all %}{{ category.slug }} {% endfor %}"><a class="portfolio-item" href="{{item.image.url}}" data-lightbox>
+                    <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="{{item.image.url}}">
+                      <div class="item-content">
+                        <h6 class="content-title">{{item.title}}</h6><span class="content-more">More Info</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                {% endfor %}       
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Blog lightbox-->
+  <!-- <div class="lightbox-wrapper" id="blog" data-simplebar>
+    <div class="container">
+      <div class="lightbox-close">
+        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="lightbox-content">
+            <div class="row">
+              <div class="col-12">
+                <div class="section-heading page-heading">
+                  <p class="section-description">Check out my latest blog posts</p>
+                  <h2 class="section-title">My Blog</h2>
+                  <div class="animated-bar"></div>
+                </div>
+              </div>
+            </div> -->
+            <!-- Blog section-->
+            <!-- <div class="blog-section single-section">
+              <div class="row justify-content-center"> -->
+                <!-- Single post-->
+                <!-- <div class="col-12 col-sm-8 col-lg-4">
+                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="img/post-1.jpg" alt="Blog post"><span class="content-date">11 Dec, 20</span></a>
+                    <div class="card-body post-content"><a href="#0">
+                        <h5 class="card-title content-title">Top tools for Photographers</h5>
+                      </a>
+                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- Single post-->
+                <!-- <div class="col-12 col-sm-8 col-lg-4">
+                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="img/post-2.jpg" alt="Blog post"><span class="content-date">12 Aug, 20</span></a>
+                    <div class="card-body post-content"><a href="#0">
+                        <h5 class="card-title content-title">Take a tour of my office</h5>
+                      </a>
+                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- Single post-->
+                <!-- <div class="col-12 col-sm-8 col-lg-4">
+                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="img/post-3.jpg" alt="Blog post"><span class="content-date">4 Feb, 20</span></a>
+                    <div class="card-body post-content"><a href="#0">
+                        <h5 class="card-title content-title">How i became a Web Designer</h5>
+                      </a>
+                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
+                    </div>
+                  </div> -->
+                <!-- </div>Single post -->
+                <!-- <div class="col-12 col-sm-8 col-lg-4">
+                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="img/post-4.jpg" alt="Blog post"><span class="content-date">11 Dec, 19</span></a>
+                    <div class="card-body post-content"><a href="#0">
+                        <h5 class="card-title content-title">How to improve work performance</h5>
+                      </a>
+                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- Single post-->
+                <!-- <div class="col-12 col-sm-8 col-lg-4">
+                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="img/post-5.jpg" alt="Blog post"><span class="content-date">15 Nov, 19</span></a>
+                    <div class="card-body post-content"><a href="#0">
+                        <h5 class="card-title content-title">How to work from home</h5>
+                      </a>
+                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- Single post-->
+                <!-- <div class="col-12 col-sm-8 col-lg-4">
+                  <div class="card single-post"><a class="post-img" href="#0"><img class="card-img-top" src="img/post-6.jpg" alt="Blog post"><span class="content-date">8 Aug, 19</span></a>
+                    <div class="card-body post-content"><a href="#0">
+                        <h5 class="card-title content-title">How to enjoy your business trip</h5>
+                      </a>
+                      <p class="card-text content-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo quam, eum alias id, repellendus magni, quas.</p>
+                    </div>
+                  </div>
+                </div> -->
+              <!-- </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- Contact lightbox-->
+  <div class="lightbox-wrapper" id="contact" data-simplebar>
+    <div class="container">
+      <div class="lightbox-close">
+        <div class="close-btn" data-modal-close=""><span class="btn-line"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="lightbox-content">
+            <div class="row">
+              <div class="col-12">
+                <div class="section-heading page-heading">
+                  <p class="section-description">Feel free to contact me anytimes</p>
+                  <h2 class="section-title">Get in Touch</h2>
+                  <div class="animated-bar"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Contact section-->
+            <div class="contact-section single-section">
+              <div class="row">
+                <!-- Contact form-->
+                <div class="col-12 col-lg-7">
+                  <form class="contact-form" id="contact-form" action="{% url 'home' %}" method="POST">
+                    {% csrf_token %}
+                    <h4 class="content-title">Message Me</h4>
+                    <div class="row">
+                      <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-name" type="text" name="name" placeholder="Name" required=""></div>
+                      <div class="col-12 col-md-6 form-group"><input class="form-control" id="contact-email" type="email" name="email" placeholder="Email" required=""></div>
+                      <div class="col-12 form-group"><input class="form-control" id="contact-subject" type="text" name="subject" placeholder="Subject" required=""></div>
+                      <div class="col-12 form-group form-message"><textarea class="form-control" id="contact-message" name="message" placeholder="Message" rows="5" required=""></textarea></div>
+                      <div class="col-12 form-submit"><button class="btn button-main button-scheme" id="contact-submit" type="submit">Send Message</button>
+                        <p class="contact-feedback"></p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- Contact info-->
+                <div class="col-12 col-lg-5">
+                  <div class="contact-info">
+                    <h4 class="content-title">Contact Info</h4>
+                    <p class="info-description" >{% for data in Contact_Data %} {{ data.contact_info }} {% endfor %} </p>
+                    <ul class="list-unstyled list-info">
+                      <li>
+                        <div class="media align-items-center"><span class="info-icon"><i class="icon ion-logo-ionic"></i></span>
+                          <div class="media-body info-details">
+                            <h6 class="info-type">Name</h6><span class="info-value">{% for name in Home_Page_Data %} {{name.first_name}} {{name.last_name}} {% endfor %}</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="media align-items-center"><span class="info-icon"><i class="icon ion-md-map"></i></span>
+                          <div class="media-body info-details">
+                            <h6 class="info-type">Location</h6><span class="info-value">{% for data in Contact_Data %} {{data.location}} {% endfor %}</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="media align-items-center"><span class="info-icon"><i class="icon ion-md-call"></i></span>
+                          <div class="media-body info-details">
+                            <h6 class="info-type">Call Me</h6><span class="info-value">{% for data in Contact_Data %}<a href="tel:{{data.phone_number}}">{{data.phone_number}}</a>{% endfor %}</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="media align-items-center"><span class="info-icon"><i class="icon ion-md-send"></i></span>
+                          <div class="media-body info-details">
+                            <h6 class="info-type">Email Me</h6><span class="info-value">{% for data in About_Section_Data %}<a href="mailto:{{data.email}}">{{data.email}}</a>{% endfor %}</span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts-->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'js/animatedModal.js' %}"></script>
+  <script src="{% static 'js/tiny-slider.js' %}"></script>
+  <script src="{% static 'js/lity.min.js' %}"></script>
+  <script src="{% static 'js/simplebar.min.js' %}"></script>
+  <script src="{% static 'js/jquery.mb.YTPlayer.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <!-- Custom JS (Add your custom JS scripts to this file)-->
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>
