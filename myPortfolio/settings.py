@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-6lt9+u990d(1zd+!o*f-eqg^9gu11v#bfysp49259v+y4ohbkl
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['q3f9n64i.up.railway.app', 'qasim.dedyn.io']
 
  
 # Application definition
